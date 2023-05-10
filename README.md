@@ -1,0 +1,1 @@
+Isometric demo for the [wfc_voxel] crate. Tile set created by [DANI MACCARI](https://dani-maccari.itch.io/cardboard-castles)
