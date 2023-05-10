@@ -46,7 +46,7 @@ fn setup(
 
     let air_nodes = node_data.asset_bits(&String::from("air")).unwrap();
     let full_nodes = node_data.asset_bits(&String::from("full")).unwrap();
-    let mut initial_val = node_data.bit_mask();
+    let mut initial_val = node_data.bit_mask().clone();
     
     // remove full nodes
     for id in full_nodes.iter_ones() {
@@ -108,7 +108,7 @@ fn keyboard_input(
         for y in 0..shape[1] {
             for z in 0..shape[2] {
                 let node_id = map[[x, y, z]];
-                let asset_name = node_data.get_asset_name(&node_id);
+                let asset_name = node_data.get_asset_name(&node_id).unwrap();
                 match asset_name.as_str() {
                     "grass" => { continue; }
                     "free_side" => { continue; }

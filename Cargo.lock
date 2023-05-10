@@ -3182,9 +3182,9 @@ dependencies = [
 
 [[package]]
 name = "wfc_voxel"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9bb2d4005327df0f481dc9e18f9983b648fcf32a26fc8e678e9119ab3a3ab27c"
+checksum = "4c4bf422fdc00bd0e4e61c5fe164ee3585fc3821adac50aa0c48bea930468153"
 dependencies = [
  "bitvec",
  "ndarray",
