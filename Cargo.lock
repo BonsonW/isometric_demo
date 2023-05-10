@@ -1106,15 +1106,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fd16c4719339c4530435d38e511904438d07cce7950afa3718a84ac36c10e89e"
 
 [[package]]
-name = "city_demo"
-version = "0.1.0"
-dependencies = [
- "bevy",
- "rand",
- "wfc_voxel",
-]
-
-[[package]]
 name = "clang-sys"
 version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1805,6 +1796,15 @@ checksum = "9b2d4429acc1deff0fbdece0325b4997bdb02b2c245ab7023fd5deca0f6348de"
 dependencies = [
  "core-foundation-sys 0.8.4",
  "mach2",
+]
+
+[[package]]
+name = "isometric_demo"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "rand",
+ "wfc_voxel",
 ]
 
 [[package]]
