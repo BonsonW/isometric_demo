@@ -15,7 +15,7 @@ static MAP_H: usize = 3;
 
 static TILE_SCALE: f32 = 4.;
 
-static OFFSET_Y: f32 = -200.;
+static OFFSET_Y: f32 = -160.;
 
 #[derive(Resource)]
 struct NodeDataRes(NodeData);
@@ -148,7 +148,7 @@ fn get_tile_transform(x: usize, y: usize, z: usize) -> Transform {
     
     let x_coord = x - z;
     let z_coord = (x/2. + z/2.) + y;
-    let y_coord = 999. - z_coord + y * 2.;
+    let y_coord = 600. - z_coord + y * 2.;
     
     let mut transform = Transform::from_xyz(
         x_coord * TILE_W * TILE_SCALE,
