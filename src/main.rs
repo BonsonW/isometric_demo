@@ -111,7 +111,7 @@ fn keyboard_input(
                 let asset_name = node_data.get_asset_name(&node_id);
                 match asset_name.as_str() {
                     "grass" => { continue; }
-                    "house_free_side" => { continue; }
+                    "free_side" => { continue; }
                     _ => {}
                 }
                 
