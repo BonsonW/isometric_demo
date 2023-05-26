@@ -1,8 +1,8 @@
-use std::{env, collections::HashMap, fs::read_dir};
+use std::{env, collections::HashSet, fs::read_dir};
 
 use bevy::prelude::*;
 use rand::Rng;
-use wfc_voxel::{NodeData, Solver};
+use wfc_voxel::{NodeSet, Solver};
 
 
 static NODE_LENGTH: usize = 3;
@@ -18,7 +18,7 @@ static TILE_SCALE: f32 = 4.;
 static OFFSET_Y: f32 = -160.;
 
 #[derive(Resource)]
-struct NodeDataRes(NodeData);
+struct NodeDataRes(NodeSet);
 
 #[derive(Resource)]
 struct SolverRes(Solver);
@@ -42,7 +42,9 @@ fn setup(
     mut commands: Commands
 ) {
     let prelim_dir = String::from(format!("{}/assets/prelim", env::current_dir().unwrap().to_str().unwrap()));
-    let node_data = NodeData::new(NODE_LENGTH, prelim_dir, HashMap::new());
+    
+    
+    let node_data = NodeSet::new(NODE_LENGTH, prelim_dir, HashSet::new());
 
     let air_nodes = node_data.asset_bits(&String::from("air")).unwrap();
     let full_nodes = node_data.asset_bits(&String::from("full")).unwrap();
@@ -53,7 +55,7 @@ fn setup(
         initial_val.set(id, false);
     }
     
-    let mut solver = Solver::new([MAP_W, MAP_H, MAP_W], &initial_val, &node_data, false);
+    let mut solver = Solver::new([MAP_W, MAP_H, MAP_W], &initial_val, &node_data);
     
     // collapse bottom of the map to ones that attach to full
     wfc_voxel::collapse_y_axis(
@@ -99,7 +101,7 @@ fn keyboard_input(
     }
     let node_data = &node_data.0;
     let mut solver =  solver.0.clone();
-    let map = solver.solve();
+    let map = solver.solve().unwrap();
 
     let mut rng = rand::thread_rng();
     let shape = solver.shape();
